@@ -39,8 +39,14 @@ ESP32 + MQTT based smart relay automation system using Adafruit IO for real-time
  Button 3 | GPIO 34 
  Button 4 | GPIO 35 
 
-# Working Principle
+# Hardware Prototype
+<img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/dd794c9a-e2b6-4c35-be34-acabfe188ab4" />
 
+# Dashboard Interface
+<img width="1580" height="804" alt="image" src="https://github.com/user-attachments/assets/a2954243-bb8e-4119-84fe-85803bbbd545" />
+
+
+# Working Principle
 The ESP32 connects to the Adafruit IO cloud platform through Wi-Fi using MQTT protocol. <br>
 Each push button controls a corresponding relay locally. <br>
 Relay status is updated to the cloud dashboard in real time. <br>
