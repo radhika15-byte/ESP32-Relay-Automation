@@ -1,0 +1,164 @@
+int  led1state=0;
+int  led2state=0;
+int  led3state=0;
+int  led4state=0;
+
+#include "WiFi.h"
+#include "AdafruitIO_WiFi.h"
+
+// ------------ WiFi ------------
+#define WIFI_SSID       "Radhika"
+#define WIFI_PASS       "123456789"
+
+// ------------ Adafruit IO ------------
+#define IO_USERNAME    "Radhika_Narute"
+#define IO_KEY         "aio_fnCN07nJbvYukTIkK0pnBpc0xEk8"
+
+AdafruitIO_WiFi io(IO_USERNAME, IO_KEY, WIFI_SSID, WIFI_PASS);
+
+// Create feeds
+AdafruitIO_Feed *relayFeed1 = io.feed("Relay1");
+AdafruitIO_Feed *relayFeed2  = io.feed("Relay2");
+AdafruitIO_Feed *relayFeed3 = io.feed("Relay3");
+AdafruitIO_Feed *relayFeed4  = io.feed("Relay4");
+
+// LED pins
+#define relay1 2
+#define relay2 5
+#define relay3 14
+#define relay4 15
+
+#define button1 32
+#define button2 33
+#define button3 34
+#define button4 35
+
+// ---------------- CALLBACK FOR LEDs ----------------
+void handleRelay1(AdafruitIO_Data *data) {
+  Serial.print("relay Feed 1: ");
+  Serial.println(data->value());
+
+  if (data->toInt() == 1) {
+    led1state=1;
+    digitalWrite(relay1, HIGH);
+    Serial.println("relay1 ON");
+  } else {
+     led1state=0;
+    digitalWrite(relay1, LOW);
+    Serial.println("relay1 OFF");
+  }
+}
+
+void handleRelay2(AdafruitIO_Data *data) {
+  Serial.print("relay Feed 2: ");
+  Serial.println(data->value());
+
+  if (data->toInt() == 1) {
+    led2state=1;
+    digitalWrite(relay2, HIGH);
+    Serial.println("relay2 ON");
+  } else {
+    led2state=0;
+    digitalWrite(relay2, LOW);
+    Serial.println("relay2 OFF");
+  }
+}
+
+void handleRelay3(AdafruitIO_Data *data) {
+  Serial.print("relay Feed 3: ");
+  Serial.println(data->value());
+
+  if (data->toInt() == 1) {
+    led3state=1;
+    digitalWrite(relay3, HIGH);
+    Serial.println("relay3 ON");
+  } else {
+    led3state=0;
+    digitalWrite(relay3, LOW);
+    Serial.println("relay3 OFF");
+  }
+}
+
+void handleRelay4(AdafruitIO_Data *data) {
+  Serial.print("relay Feed 4: ");
+  Serial.println(data->value());
+
+  if (data->toInt() == 1) {
+    led4state=1;
+    digitalWrite(relay4, HIGH);
+    Serial.println("relay4 ON");
+  } else {
+    led4state=0;
+    digitalWrite(relay4, LOW);
+    Serial.println("relay4 OFF");
+  }
+}
+
+void setup() {
+  Serial.begin(115200);
+
+  pinMode(relay1, OUTPUT);
+  pinMode(relay2, OUTPUT);
+  pinMode(relay3, OUTPUT);
+  pinMode(relay4, OUTPUT);
+
+  pinMode(button1,INPUT);
+  pinMode(button2,INPUT);
+  pinMode(button3,INPUT);
+  pinMode(button4,INPUT);
+
+  Serial.print("Connecting to Adafruit IO");
+  io.connect();
+
+  // Attach callback functions
+  relayFeed1->onMessage(handleRelay1);
+  relayFeed2->onMessage(handleRelay2);
+  relayFeed3->onMessage(handleRelay3);
+  relayFeed4->onMessage(handleRelay4);
+
+  // Wait for connection
+  while (io.status() < AIO_CONNECTED) {
+    Serial.print(".");
+    delay(500);
+  }
+
+  Serial.println();
+  Serial.println("Connected to Adafruit IO");
+}
+
+void loop() {
+  io.run();  // Maintain MQTT connection
+  if(digitalRead(button1))
+  {
+      led1state= !led1state;
+      digitalWrite(relay1,led1state);
+      relayFeed1 ->save(led1state);
+      delay(500);    
+  }
+
+   if(digitalRead(button2))
+  {
+      led2state= !led2state;
+      digitalWrite(relay2,led2state);
+      relayFeed2 ->save(led2state);
+      delay(500);    
+  }
+
+   if(digitalRead(button3))
+  {
+      led3state= !led3state;
+      digitalWrite(relay3,led3state);
+      relayFeed3 ->save(led3state);
+      delay(500);    
+  }
+
+   if(digitalRead(button4))
+  {
+      led4state= !led4state;
+      digitalWrite(relay4,led4state);
+      relayFeed4 ->save(led4state);
+      delay(500);    
+  }
+}
+
+  
