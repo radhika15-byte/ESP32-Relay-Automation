@@ -2,13 +2,13 @@
 ESP32 + MQTT based smart relay automation system using Adafruit IO for real-time relay monitoring and control.
 
 # Features
-1.4-channel relay control using ESP32
-2.Physical push-button switching
-3.Real-time cloud synchronization
-4.MQTT-based communication using Adafruit IO
-5.Remote relay monitoring and control
-6.Wi-Fi enabled automation system
-7.Bidirectional relay status updates
+1.4-channel relay control using ESP32 <br>
+2.Physical push-button switching <br>
+3.Real-time cloud synchronization <br>
+4.MQTT-based communication using Adafruit IO <br>
+5.Remote relay monitoring and control <br>
+6.Wi-Fi enabled automation system <br>
+7.Bidirectional relay status updates <br>
 
 # Hardware Requirements
  ESP32 Development Board
