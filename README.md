@@ -54,7 +54,7 @@ Relay Feeds → MQTT Topics
 
 # MQTT Operations
 save() → Publish relay status
-onMessage() → Subscribe to cloud updates
+               onMessage() → Subscribe to cloud updates
 
 # The dashboard displays:
 Relay ON/OFF status
