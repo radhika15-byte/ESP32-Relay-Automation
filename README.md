@@ -2,27 +2,27 @@
 ESP32 + MQTT based smart relay automation system using Adafruit IO for real-time relay monitoring and control.
 
 # Features
-1.4-channel relay control using ESP32 <br>
-2.Physical push-button switching <br>
-3.Real-time cloud synchronization <br>
-4.MQTT-based communication using Adafruit IO <br>
-5.Remote relay monitoring and control <br>
-6.Wi-Fi enabled automation system <br>
-7.Bidirectional relay status updates <br>
+1. 4-channel relay control using ESP32 <br>
+2. Physical push-button switching <br>
+3. Real-time cloud synchronization <br>
+4. MQTT-based communication using Adafruit IO <br>
+5. Remote relay monitoring and control <br>
+6. Wi-Fi enabled automation system <br>
+7. Bidirectional relay status updates <br>
 
 # Hardware Requirements
- ESP32 Development Board
- 4-Channel Relay Module
- Push Buttons / Switches
- Jumper Wires
- Breadboard
- Power Supply
+ ESP32 Development Board <br>
+ 4-Channel Relay Module <br>
+ Push Buttons / Switches <br>
+ Jumper Wires <br>
+ Breadboard <br>
+ Power Supply <br>
 
 # Software Requirements
- Arduino IDE
- ESP32 Board Package
- Adafruit IO Arduino Library
- WiFi Library
+ Arduino IDE <br>
+ ESP32 Board Package <br>
+ Adafruit IO Arduino Library <br>
+ WiFi Library <br>
  
 # Circuit Connections
  Relay   | ESP32 GPIO 
@@ -41,30 +41,30 @@ ESP32 + MQTT based smart relay automation system using Adafruit IO for real-time
 
 # Working Principle
 
-The ESP32 connects to the Adafruit IO cloud platform through Wi-Fi using MQTT protocol.
-Each push button controls a corresponding relay locally.
-Relay status is updated to the cloud dashboard in real time.
-Cloud commands from Adafruit IO can also control relays remotely.
-The system maintains bidirectional synchronization between hardware and cloud interface.
+The ESP32 connects to the Adafruit IO cloud platform through Wi-Fi using MQTT protocol. <br>
+Each push button controls a corresponding relay locally. <br>
+Relay status is updated to the cloud dashboard in real time. <br>
+Cloud commands from Adafruit IO can also control relays remotely. <br>
+The system maintains bidirectional synchronization between hardware and cloud interface. <br>
 
 # MQTT Architecture
-ESP32 → MQTT Client
-Adafruit IO → MQTT Broker
-Relay Feeds → MQTT Topics
+ESP32 → MQTT Client <br>
+Adafruit IO → MQTT Broker <br>
+Relay Feeds → MQTT Topics <br>
 
 # MQTT Operations
-save() → Publish relay status
-               onMessage() → Subscribe to cloud updates
+save() → Publish relay status <br>
+onMessage() → Subscribe to cloud updates <br>
 
 # The dashboard displays:
-Relay ON/OFF status
-Real-time device synchronization
-Remote control interface
+Relay ON/OFF status <br>
+Real-time device synchronization <br>
+Remote control interface <br>
 
 # Applications
-Home Automation
-Smart Switching Systems
-Remote Electrical Control
-IoT-based Appliance Management
-Industrial Automation Prototypes
+Home Automation <br> 
+Smart Switching Systems <br>
+Remote Electrical Control <br>
+IoT-based Appliance Management <br>
+Industrial Automation Prototypes <br>
 
